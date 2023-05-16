@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/baseline_home_24"
+            android:id="@+id/menu_ql_phieumuon"
+            android:title="Quản lý Phiếu Mượn"/>
+
+        <item
+            android:icon="@drawable/baseline_bookmarks_24"
+            android:id="@+id/menu_ql_loai_sach"
+            android:title="Quản lý loại sách"
+            />
+
+        <item
+            android:icon="@drawable/baseline_picture_as_pdf_24"
+            android:id="@+id/menu_ql_sach"
+            android:title="Quản lý sách"/>
+
+        <item
+            android:icon="@drawable/baseline_people_alt_24"
+            android:id="@+id/menu_ql_thanhvien"
+            android:title="Quản lý Thành viên"/>
+
+
+    </group>
+    <item android:title="Thống kê">
+        <menu>
+            <item
+                android:icon="@drawable/baseline_vertical_align_top_24"
+                android:id="@+id/menu_tk_10_sach_mnn"
+                android:title="10 Sách mượn nhiều nhất">
+
+            </item>
+            <item
+                android:icon="@drawable/baseline_attach_money_24"
+                android:id="@+id/menu_tk_danhthu"
+                android:title="Danh thu">
+
+            </item>
+        </menu>
+    </item>
+
+    <item android:title="Người dùng">
+        <menu>
+            <item
+                android:icon="@drawable/baseline_person_add_24"
+                android:id="@+id/menu_nd_them_nd"
+                android:title="Thêm người dùng">
+
+            </item>
+            <item
+                android:icon="@drawable/baseline_vpn_key_24"
+                android:id="@+id/menu_nd_doimk"
+                android:title="Đổi mật khẩu">
+
+            </item>
+            <item
+                android:icon="@drawable/baseline_vpn_key_24"
+                android:id="@+id/menu_nd_thoat"
+                android:title="Đăng xuất">
+            </item>
+        </menu>
+    </item>
+
+</menu>
