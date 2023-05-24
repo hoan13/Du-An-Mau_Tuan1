@@ -45,7 +45,7 @@
         <menu>
             <item
                 android:icon="@drawable/baseline_person_add_24"
-                android:id="@+id/menu_nd_them_nd"
+                android:id="@+id/menu_nd_them_nguoidung"
                 android:title="Thêm người dùng">
 
             </item>

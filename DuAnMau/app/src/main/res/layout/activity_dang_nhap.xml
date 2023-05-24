@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".DangNhapActivity"
     android:orientation="vertical"
-    android:layout_margin="">
+    android:background="@drawable/img">
 
     <ImageView
         android:layout_gravity="center"
@@ -14,13 +14,23 @@
         android:layout_height="wrap_content"
         android:src="@drawable/logo"/>
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ĐĂNG NHẬP"
+        android:textColor="#CD1D1D"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+    <TextView
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tên đăng nhập"
+        android:textSize="20dp"
         android:textColor="#1A14B8"/>
+
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ed_UserName"
+        android:id="@+id/ed_UserName_Dn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"/>
@@ -31,34 +41,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mật khẩu"
+        android:textSize="20dp"
         android:textColor="#1A14B8"/>
     <com.google.android.material.textfield.TextInputEditText
         android:layout_margin="10dp"
-        android:id="@+id/ed_Password"
+        android:id="@+id/ed_Password_Dn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
 
     <CheckBox
         android:id="@+id/ckb_Nho_mk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lưu mật khẩu"/>
+        android:text="Lưu mật khẩu"
+        android:layout_marginLeft="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="10dp">
         <Button
-            android:id="@+id/btnLogin_Dn"
+            android:id="@+id/btnDangNhap_Dn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="đăng nhập"
             android:layout_marginRight="40dp"/>
         <Button
-            android:id="@+id/btnCancle_Dn"
+            android:id="@+id/btnHuy_Dn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="hủy"/>
+            android:text="thoát"/>
     </LinearLayout>
 
 </LinearLayout>

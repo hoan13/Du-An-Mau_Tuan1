@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dthu_btn_ngaybd"
+            android:text="TỪ NGÀY"
+            android:layout_marginLeft="10dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/dthu_ed_ngaybd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dthu_btn_ngaykt"
+            android:layout_below="@+id/dt_btntungay"
+            android:text="ĐẾN NGÀY"
+            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_marginLeft="10dp"/>
+        <EditText
+            android:id="@+id/dthu_ed_ngaykt"
+            android:layout_below="@+id/dt_tungay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/dthu_btn_tong_dt"
+        android:text="TỔNG DOANH THU"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/dthu_ed_tongdt"
+        android:layout_below="@+id/dt_btndoanhthu"
+        android:hint="Tổng Doanh Thu "
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
