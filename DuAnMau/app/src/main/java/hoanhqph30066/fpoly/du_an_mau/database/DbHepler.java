@@ -22,16 +22,16 @@ public class DbHepler extends SQLiteOpenHelper {
         // Tạo bảng Thành Viên
         String createTableThanhVien = "CREATE TABLE IF NOT EXISTS ThanhVien(" +
                 "MaTV INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "HoTenTV TEXT NOT NULL, " +
-                "NamSinhTV TEXT NOT NULL" +
+                "TenTV TEXT NOT NULL, " +
+                "CccdTV TEXT NOT NULL" +
                 ")";
         db.execSQL(createTableThanhVien);
 
         // Tạo bảng Thủ Thư
         String createTableThuThu = "CREATE TABLE IF NOT EXISTS ThuThu(" +
                 "MaTT INTERGER PRIMARY KEY AUTOINCREMENT, " +
-                "MatKhauTT TEXT NOT NULL, " +
-                "HoTenTT TEXT NOT NULL" +
+                "TenTT TEXT NOT NULL, " +
+                "MatKhauTT TEXT NOT NULL" +
                 ")";
         db.execSQL(createTableThuThu);
 

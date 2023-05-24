@@ -34,6 +34,7 @@ public class ManChoActivity extends AppCompatActivity {
                 if(dem == 30){
                     t.cancel();
                     startActivity(new Intent(ManChoActivity.this,DangNhapActivity.class));
+                    finish();
                 }
             }
         };

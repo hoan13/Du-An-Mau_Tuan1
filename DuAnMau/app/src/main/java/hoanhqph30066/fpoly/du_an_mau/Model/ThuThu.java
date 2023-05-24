@@ -4,6 +4,8 @@ public class ThuThu {
     private int MaTt;
     private String TenTt;
 
+    private String MK;
+
     public ThuThu() {
     }
 
@@ -21,5 +23,13 @@ public class ThuThu {
 
     public void setTenTt(String tenTt) {
         TenTt = tenTt;
+    }
+
+    public String getMK() {
+        return MK;
+    }
+
+    public void setMK(String MK) {
+        this.MK = MK;
     }
 }
