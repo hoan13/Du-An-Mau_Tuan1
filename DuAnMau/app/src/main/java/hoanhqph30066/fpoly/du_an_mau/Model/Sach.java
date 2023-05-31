@@ -2,24 +2,19 @@ package hoanhqph30066.fpoly.du_an_mau.Model;
 
 public class Sach {
     private int MaSach;
+    private int MaLoaiSach;
     private String TenSach;
     private int GiaSach;
-    private String TenLs;
+    private int SoluongSachMuon;
+    private String TenLoai;
 
     public Sach() {
     }
 
-    public Sach(int maSach, String tenSach, int giaSach, String tenLs) {
+    public Sach(int maSach, String tenSach, int soluongSachMuon) {
         MaSach = maSach;
         TenSach = tenSach;
-        GiaSach = giaSach;
-        TenLs = tenLs;
-    }
-
-    public Sach(String tenSach, int giaSach, String tenLs) {
-        TenSach = tenSach;
-        GiaSach = giaSach;
-        TenLs = tenLs;
+        SoluongSachMuon = soluongSachMuon;
     }
 
     public int getMaSach() {
@@ -28,6 +23,14 @@ public class Sach {
 
     public void setMaSach(int maSach) {
         MaSach = maSach;
+    }
+
+    public int getMaLoaiSach() {
+        return MaLoaiSach;
+    }
+
+    public void setMaLoaiSach(int maLoaiSach) {
+        MaLoaiSach = maLoaiSach;
     }
 
     public String getTenSach() {
@@ -46,11 +49,19 @@ public class Sach {
         GiaSach = giaSach;
     }
 
-    public String getTenLs() {
-        return TenLs;
+    public int getSoluongSachMuon() {
+        return SoluongSachMuon;
     }
 
-    public void setTenLs(String tenLs) {
-        TenLs = tenLs;
+    public void setSoluongSachMuon(int soluongSachMuon) {
+        SoluongSachMuon = soluongSachMuon;
+    }
+
+    public String getTenLoai() {
+        return TenLoai;
+    }
+
+    public void setTenLoai(String tenLoai) {
+        TenLoai = tenLoai;
     }
 }

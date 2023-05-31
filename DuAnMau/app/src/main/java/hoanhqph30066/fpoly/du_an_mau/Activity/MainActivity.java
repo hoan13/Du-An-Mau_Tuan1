@@ -1,12 +1,16 @@
-package hoanhqph30066.fpoly.du_an_mau;
+package hoanhqph30066.fpoly.du_an_mau.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -22,17 +26,20 @@ import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Sach.QuanLy_Sach_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Thanh_Vien.QuanLy_ThanhVien_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.Sach_Muon_Nhieu_Nhat.SachMuon_NhieuNhat_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.Them_Thanh_Vien.Them_ThanhVien_Fragment;
+import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.id_toolbar);
+        toolbar = findViewById(R.id.id_toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.id_drawer);
@@ -79,11 +86,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             replaceFragment(new Doi_MatKhau_Fragment());
             return true;
         } else if (item.getItemId() == R.id.menu_nd_thoat) {
-            finish();
-            return true;
-        } else {
-            return false;
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Bạn có muốn thoát không?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        toolbar.setTitle(item.getTitle().toString());
+            return true;
+
     }
 
     public void replaceFragment(Fragment fragment) {

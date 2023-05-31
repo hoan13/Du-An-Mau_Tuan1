@@ -1,4 +1,4 @@
-package hoanhqph30066.fpoly.du_an_mau;
+package hoanhqph30066.fpoly.du_an_mau.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.ProgressBar;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class ManChoActivity extends AppCompatActivity {
     ProgressBar progressBar;
@@ -33,7 +35,7 @@ public class ManChoActivity extends AppCompatActivity {
                 progressBar.setProgress(dem);
                 if(dem == 30){
                     t.cancel();
-                    startActivity(new Intent(ManChoActivity.this,DangNhapActivity.class));
+                    startActivity(new Intent(ManChoActivity.this, DangNhapActivity.class));
                     finish();
                 }
             }

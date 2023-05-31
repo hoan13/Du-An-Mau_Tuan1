@@ -1,78 +1,97 @@
 package hoanhqph30066.fpoly.du_an_mau.Model;
 
 public class PhieuMuon {
-    private int MaPm;
-    private String NgayThue;
-    private String TrangThai;
-    private String TenTv;
-    private String TenS;
-    private int GiaThue;
+    private int maPhieuMuon;
+    private int maThanhVien;
+    private int maSach;
+    private int TrangThai;
+    private int tienThue;
+    private String tenThanhVien;
+    private String tenThuThu;
+    private String tenSach;
+    private String ngay;
+    private String maThuThu;
 
     public PhieuMuon() {
     }
 
-    public PhieuMuon(int maPm, String ngayThue, String trangThai, String tenTv, String tenS, int giaThue) {
-        MaPm = maPm;
-        NgayThue = ngayThue;
-        TrangThai = trangThai;
-        TenTv = tenTv;
-        TenS = tenS;
-        GiaThue = giaThue;
+    public int getMaPhieuMuon() {
+        return maPhieuMuon;
     }
 
-    public PhieuMuon(String ngayThue, String trangThai, String tenTv, String tenS, int giaThue) {
-        NgayThue = ngayThue;
-        TrangThai = trangThai;
-        TenTv = tenTv;
-        TenS = tenS;
-        GiaThue = giaThue;
+    public void setMaPhieuMuon(int maPhieuMuon) {
+        this.maPhieuMuon = maPhieuMuon;
     }
 
-    public int getMaPm() {
-        return MaPm;
+    public int getMaThanhVien() {
+        return maThanhVien;
     }
 
-    public void setMaPm(int maPm) {
-        MaPm = maPm;
+    public void setMaThanhVien(int maThanhVien) {
+        this.maThanhVien = maThanhVien;
     }
 
-    public String getNgayThue() {
-        return NgayThue;
+    public int getMaSach() {
+        return maSach;
     }
 
-    public void setNgayThue(String ngayThue) {
-        NgayThue = ngayThue;
+    public void setMaSach(int maSach) {
+        this.maSach = maSach;
     }
 
-    public String getTrangThai() {
+    public int getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(String trangThai) {
+    public void setTrangThai(int trangThai) {
         TrangThai = trangThai;
     }
 
-    public String getTenTv() {
-        return TenTv;
+    public int getTienThue() {
+        return tienThue;
     }
 
-    public void setTenTv(String tenTv) {
-        TenTv = tenTv;
+    public void setTienThue(int tienThue) {
+        this.tienThue = tienThue;
     }
 
-    public String getTenS() {
-        return TenS;
+    public String getTenThanhVien() {
+        return tenThanhVien;
     }
 
-    public void setTenS(String tenS) {
-        TenS = tenS;
+    public void setTenThanhVien(String tenThanhVien) {
+        this.tenThanhVien = tenThanhVien;
     }
 
-    public int getGiaThue() {
-        return GiaThue;
+    public String getTenThuThu() {
+        return tenThuThu;
     }
 
-    public void setGiaThue(int giaThue) {
-        GiaThue = giaThue;
+    public void setTenThuThu(String tenThuThu) {
+        this.tenThuThu = tenThuThu;
+    }
+
+    public String getTenSach() {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getMaThuThu() {
+        return maThuThu;
+    }
+
+    public void setMaThuThu(String maThuThu) {
+        this.maThuThu = maThuThu;
     }
 }

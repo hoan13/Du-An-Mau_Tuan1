@@ -3,15 +3,15 @@ package hoanhqph30066.fpoly.du_an_mau.Model;
 public class ThanhVien {
     private int MaTv;
     private String TenTv;
-    private String Cccd;
+    private String namsinh;
 
     public ThanhVien() {
     }
 
-    public ThanhVien(int maTv, String tenTv, String cccd) {
+    public ThanhVien(int maTv, String tenTv, String namsinh) {
         MaTv = maTv;
         TenTv = tenTv;
-        Cccd = cccd;
+        this.namsinh = namsinh;
     }
 
     public int getMaTv() {
@@ -30,11 +30,11 @@ public class ThanhVien {
         TenTv = tenTv;
     }
 
-    public String getCccd() {
-        return Cccd;
+    public String getNamsinh() {
+        return namsinh;
     }
 
-    public void setCccd(String cccd) {
-        Cccd = cccd;
+    public void setNamsinh(String namsinh) {
+        this.namsinh = namsinh;
     }
 }

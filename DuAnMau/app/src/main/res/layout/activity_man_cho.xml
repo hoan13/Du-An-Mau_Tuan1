@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ManChoActivity"
+    tools:context=".Activity.ManChoActivity"
     android:background="@color/vang_deu">
 
     <pl.droidsonroids.gif.GifImageView

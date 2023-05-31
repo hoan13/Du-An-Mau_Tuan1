@@ -13,48 +13,48 @@ public class DbHepler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Tạo bảng Loại Sách
-        String createTableLoaiSach = "CREATE TABLE IF NOT EXISTS LoaiSach(" +
+        String createTableLoaiSach = "CREATE TABLE LoaiSach(" +
                 "MaLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "TenLoai TEXT NOT NULL" +
+                "TenLoai TEXT NOT NULL UNIQUE" +
                 ")";
         db.execSQL(createTableLoaiSach);
 
         // Tạo bảng Thành Viên
-        String createTableThanhVien = "CREATE TABLE IF NOT EXISTS ThanhVien(" +
+        String createTableThanhVien = "CREATE TABLE ThanhVien(" +
                 "MaTV INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "TenTV TEXT NOT NULL, " +
-                "CccdTV TEXT NOT NULL" +
+                "hoTenTV TEXT NOT NULL, " +
+                "namSinhTV TEXT NOT NULL" +
                 ")";
         db.execSQL(createTableThanhVien);
 
         // Tạo bảng Thủ Thư
-        String createTableThuThu = "CREATE TABLE IF NOT EXISTS ThuThu(" +
-                "MaTT INTERGER PRIMARY KEY AUTOINCREMENT, " +
-                "TenTT TEXT NOT NULL, " +
-                "MatKhauTT TEXT NOT NULL" +
-                ")";
+        String createTableThuThu = "CREATE TABLE ThuThu(" +
+                "MaTT TEXT PRIMARY KEY , " +
+                "HoTenTT TEXT NOT NULL, " +
+                "MatKhauTT TEXT NOT NULL," +
+                "loaiTaiKhoan TEXT)";
         db.execSQL(createTableThuThu);
 
         // Tạo bảng Sách với khoá ngoại MaLoai tham chiếu đến bảng LoaiSach
-        String createTableSach = "CREATE TABLE IF NOT EXISTS Sach(" +
-                "MaSach INTERGER PRIMARY KEY AUTOINCREMENT, " +
-                "MaLoai INTERGER NOT NULL, " +
+        String createTableSach = "CREATE TABLE Sach(" +
+                "MaSach INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "TenSach TEXT NOT NULL, " +
-                "GiaThueSach TEXT NOT NULL, " +
-                "CONSTRAINT FK_MaLoai FOREIGN KEY (MaLoai) REFERENCES LoaiSach (MaLoai)" +
-                ")";
+                "GiaThueSach INTEGER NOT NULL," +
+                "MaLoai INTEGER  REFERENCES LoaiSach(MaLoai) )";
         db.execSQL(createTableSach);
 
         // Tạo bảng Phiếu Mượn với các khoá ngoại MaTV, MaSach, MaTT tham chiếu đến bảng ThanhVien và ThuThu
-        String createTablePhieuMuon = "CREATE TABLE IF NOT EXISTS PhieuMuon(" +
+        String createTablePhieuMuon = "CREATE TABLE PhieuMuon(" +
                 "MaPM INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "MaTV INTEGER NOT NULL, MaSach INTEGER NOT NULL, " +
-                "MaTT INTEGER NOT NULL, " +
-                "CONSTRAINT FK_MaSach FOREIGN KEY (MaSach) REFERENCES Sach (MaSach), " +
-                "CONSTRAINT FK_MaTT FOREIGN KEY (MaTT) REFERENCES ThuThu (MaTT), " +
-                "CONSTRAINT FK_MaTV FOREIGN KEY (MaTV) REFERENCES ThanhVien (MaTV)" +
-                ")";
+                "MaTV INTEGER REFERENCES ThanhVien(MaTV), " +
+                "MaSach INTEGER REFERENCES Sach(MaSach), " +
+                "MaTT INTEGER REFERENCES ThuThu(MaTT)," +
+                "Ngay TEXT NOT NULL," +
+                "TienThue INTEGER NOT NULL," +
+                "TrangThai INTEGER NOT NULL )";
         db.execSQL(createTablePhieuMuon);
+
+        db.execSQL("INSERT INTO ThuThu VALUES ('admin','Hoàng Quốc Hoàn','admin','Admin'),('thuthu1','Nguyễn Văn A','1234','Thủ thư')");
     }
 
     @Override

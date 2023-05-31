@@ -48,13 +48,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:text="CCCD:"
+        android:text="Năm Sinh:"
         android:textColor="#3F51B5"
         android:textSize="16dp"
         />
 
     <EditText
-        android:id="@+id/themtv_ed_cccd"
+        android:id="@+id/themtv_ed_ns"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

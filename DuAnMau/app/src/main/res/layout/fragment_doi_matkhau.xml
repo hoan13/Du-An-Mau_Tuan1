@@ -83,10 +83,10 @@
             android:text="Lưu" />
 
         <Button
-            android:id="@+id/dmk_btnhuy"
+            android:id="@+id/dmk_btnlamlai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hủy"
+            android:text="Làm Lại"
             android:layout_marginLeft="60dp"/>
     </LinearLayout>
 

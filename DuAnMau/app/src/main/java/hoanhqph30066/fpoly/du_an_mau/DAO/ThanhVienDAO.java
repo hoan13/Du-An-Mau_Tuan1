@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import hoanhqph30066.fpoly.du_an_mau.Model.ThanhVien;
 import hoanhqph30066.fpoly.du_an_mau.database.DbHepler;
@@ -17,17 +16,18 @@ public class ThanhVienDAO {
     public ThanhVienDAO(Context context){
         dbHepler = new DbHepler(context);
     }
-    public ArrayList<ThanhVien> GetDSTV() {
+
+    public ArrayList<ThanhVien> getDanhSachThanhVien() {
         ArrayList<ThanhVien> listtv = new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase = dbHepler.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM ThanhVien", null);
+        SQLiteDatabase db = dbHepler.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM ThanhVien", null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
                 ThanhVien thanhVien = new ThanhVien();
-                thanhVien.setMaTv(Integer.parseInt(cursor.getString(0)));
-                thanhVien.setTenTv(cursor.getString(1));
-                thanhVien.setCccd(cursor.getString(2));
+                thanhVien.setMaTv(cursor.getInt(cursor.getColumnIndexOrThrow("MaTV")));
+                thanhVien.setTenTv(cursor.getString(cursor.getColumnIndexOrThrow("hoTenTV")));
+                thanhVien.setNamsinh(cursor.getString(cursor.getColumnIndexOrThrow("namSinhTV")));
                 listtv.add(thanhVien);
 
             } while (cursor.moveToNext());
@@ -37,25 +37,33 @@ public class ThanhVienDAO {
 
     }
 
-    public long ThemThanhVien(ThanhVien thanhVien) {
-        SQLiteDatabase sqLiteDatabase = dbHepler.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("TenTV", thanhVien.getTenTv());
-        contentValues.put("CccdTV", thanhVien.getCccd());
-        return sqLiteDatabase.insert("ThanhVien", null, contentValues);
+    public boolean ThemThanhVien(String hoten, String namsinh) {
+        SQLiteDatabase db = dbHepler.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HoTenTV", hoten);
+        values.put("NamSinhTV", namsinh);
+        long check = db.insert("ThanhVien", null, values);
+        return check != -1;
     }
 
-    public long SuaThanhVien(ThanhVien thanhVien) {
-        SQLiteDatabase sqLiteDatabase = dbHepler.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("TenTV", thanhVien.getTenTv());
-        contentValues.put("CccdTV", thanhVien.getCccd());
-
-        return sqLiteDatabase.update("ThanhVien", contentValues, "MaTV = ?", new String[]{String.valueOf(thanhVien.getMaTv())});
+    public boolean SuaThanhVien(int matv ,String hoten, String namsinh) {
+        SQLiteDatabase db = dbHepler.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HoTenTV", hoten);
+        values.put("NamSinhTV", namsinh);
+        long check = db.update("ThanhVien",values,"MaTV =?", new String[]{String.valueOf(matv)});
+        return check != -1;
     }
-    public long XoaThanhVien(int matv ){
-        SQLiteDatabase sqLiteDatabase = dbHepler.getWritableDatabase();
-        return sqLiteDatabase.delete("ThanhVien","MaTV = ?",new String[]{String.valueOf(matv)});
+    public int XoaThanhVien(int matv ){
+        SQLiteDatabase db = dbHepler.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM PhieuMuon WHERE MaTV =?", new String[]{String.valueOf(matv)});
+        if (cursor.getCount() != 0) {
+            return -1; // Thành viên đang có phiếu mượn
+        }
+        int check = db.delete("ThanhVien", "MaTV =?", new String[]{String.valueOf(matv)});
+        if (check == -1)
+            return 0; // Xoá thất bại
+        return 1; // Xoá thành công
     }
 
 }

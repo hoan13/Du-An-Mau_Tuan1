@@ -15,6 +15,11 @@ public class LoaiSach {
         TenLs = tenLs;
     }
 
+    public LoaiSach(int maLs, String tenLs) {
+        MaLs = maLs;
+        TenLs = tenLs;
+    }
+
     public void setMaLs(int maLs) {
         MaLs = maLs;
     }
