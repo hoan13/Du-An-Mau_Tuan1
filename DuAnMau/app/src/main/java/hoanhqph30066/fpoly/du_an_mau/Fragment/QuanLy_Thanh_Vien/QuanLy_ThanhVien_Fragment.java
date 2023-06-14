@@ -1,7 +1,9 @@
 package hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Thanh_Vien;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 import hoanhqph30066.fpoly.du_an_mau.DAO.ThanhVienDAO;
+import hoanhqph30066.fpoly.du_an_mau.DAO.ThuThuDAO;
 import hoanhqph30066.fpoly.du_an_mau.Model.ThanhVien;
+import hoanhqph30066.fpoly.du_an_mau.Model.ThuThu;
 import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class QuanLy_ThanhVien_Fragment extends Fragment {
@@ -36,6 +40,8 @@ public class QuanLy_ThanhVien_Fragment extends Fragment {
     ThanhVienDAO thanhVienDAO;
     ArrayList<ThanhVien> list;
     ThanhVien_Adapter adapterThanhVien;
+
+    ThuThu thuthulist;
 
 
     @Nullable
@@ -49,6 +55,21 @@ public class QuanLy_ThanhVien_Fragment extends Fragment {
         list = new ArrayList<>();
         adapterThanhVien = new ThanhVien_Adapter(requireContext());
         loadData();
+
+        //test
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("THONGTIN", Context.MODE_PRIVATE);
+        String maThuThu = sharedPreferences.getString("MaTT", "");
+
+        ThuThuDAO thuThuDAO = new ThuThuDAO(getContext(),thuthulist);
+        thuthulist = thuThuDAO.getID(maThuThu);
+
+//        ThuThu thuThu =thuThuDAO.getID(maThuThu);
+
+        if(thuthulist.getLoaiTaiKhoan().equals("thành viên")){
+            flbt.setVisibility(View.INVISIBLE);
+
+        }
+        //het
 
         flbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +91,23 @@ public class QuanLy_ThanhVien_Fragment extends Fragment {
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String hoTen = Objects.requireNonNull(edHoTen.getText()).toString().trim();
-                        String namSinh = Objects.requireNonNull(edNamSinh.getText()).toString().trim();
-                        boolean check = thanhVienDAO.ThemThanhVien(hoTen, namSinh);
-                        if (check) {
-                            Toast.makeText(requireContext(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
-                            loadData();
-                        } else {
-                            Toast.makeText(requireContext(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                        if(edHoTen.length()==0 || edNamSinh.length()==0){
+                            Toast.makeText(getContext(), "không được bỏ trống", Toast.LENGTH_SHORT).show();
+                        }else {
+                            String hoTen = Objects.requireNonNull(edHoTen.getText()).toString().trim();
+                            String namSinh = Objects.requireNonNull(edNamSinh.getText()).toString().trim();
+                            boolean check = thanhVienDAO.ThemThanhVien(hoTen, namSinh);
+                            if (check) {
+                                Toast.makeText(requireContext(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                                loadData();
+//                                list = thanhVienDAO.getAllData();
+//                                adapterThanhVien.setData(list);
+//                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(requireContext(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                            }
                         }
+
                     }
                 });
                 builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {

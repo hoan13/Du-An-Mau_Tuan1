@@ -20,6 +20,7 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/avt_cd"/>
             <TextView
+                android:id="@+id/welcome_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Welcome administrator"

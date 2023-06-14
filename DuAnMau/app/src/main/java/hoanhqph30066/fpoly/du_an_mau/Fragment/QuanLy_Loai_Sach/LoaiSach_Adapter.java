@@ -2,6 +2,8 @@ package hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Loai_Sach;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import hoanhqph30066.fpoly.du_an_mau.DAO.LoaiSachDAO;
+import hoanhqph30066.fpoly.du_an_mau.DAO.ThuThuDAO;
 import hoanhqph30066.fpoly.du_an_mau.Model.LoaiSach;
+import hoanhqph30066.fpoly.du_an_mau.Model.ThuThu;
 import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class LoaiSach_Adapter extends RecyclerView.Adapter<LoaiSach_Adapter.ViewHolder> {
@@ -27,6 +31,10 @@ public class LoaiSach_Adapter extends RecyclerView.Adapter<LoaiSach_Adapter.View
     private LoaiSachDAO loaiSachDAO;
 
 
+    // test
+    ThuThu thuthulist ;
+
+    // het test
     public LoaiSach_Adapter(Context context) {
         this.context = context;
         loaiSachDAO = new LoaiSachDAO(context);
@@ -47,6 +55,20 @@ public class LoaiSach_Adapter extends RecyclerView.Adapter<LoaiSach_Adapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //test
+        SharedPreferences sharedPreferences = context.getSharedPreferences("THONGTIN", Context.MODE_PRIVATE);
+        String maThuThu = sharedPreferences.getString("MaTT", "");
+
+        ThuThuDAO thuThuDAO = new ThuThuDAO(context,thuthulist);
+        thuthulist = thuThuDAO.getID(maThuThu);
+
+//        ThuThu thuThu =thuThuDAO.getID(maThuThu);
+
+        if(thuthulist.getLoaiTaiKhoan().equals("thành viên")){
+            holder.imgSua.setVisibility(View.INVISIBLE);
+            holder.imgXoa.setVisibility(View.INVISIBLE);
+        }
+        //het
         LoaiSach loaiSach = list.get(position);
         if (loaiSach == null) {
             return;
@@ -65,7 +87,7 @@ public class LoaiSach_Adapter extends RecyclerView.Adapter<LoaiSach_Adapter.View
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         LoaiSachDAO loaiSachDAO1 = new LoaiSachDAO(context);
-                        int check = loaiSachDAO1.XoaLoaiSach(list.get(holder.getAdapterPosition()).getMaLs());
+                        int check = loaiSachDAO1.XoaLoaiSachTheoTen(list.get(holder.getAdapterPosition()).getTenLs());
                         switch (check) {
                             case 1:
                                 list.clear();
@@ -154,4 +176,6 @@ public class LoaiSach_Adapter extends RecyclerView.Adapter<LoaiSach_Adapter.View
             imgSua = itemView.findViewById(R.id.imgSua);
         }
     }
+
+
 }

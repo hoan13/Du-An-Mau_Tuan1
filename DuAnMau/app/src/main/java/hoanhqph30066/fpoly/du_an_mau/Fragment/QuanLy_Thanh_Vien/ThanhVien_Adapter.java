@@ -3,6 +3,7 @@ package hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Thanh_Vien;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,9 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import hoanhqph30066.fpoly.du_an_mau.DAO.ThanhVienDAO;
+import hoanhqph30066.fpoly.du_an_mau.DAO.ThuThuDAO;
 import hoanhqph30066.fpoly.du_an_mau.Model.ThanhVien;
+import hoanhqph30066.fpoly.du_an_mau.Model.ThuThu;
 import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class ThanhVien_Adapter extends RecyclerView.Adapter<ThanhVien_Adapter.ViewHolder> {
@@ -30,9 +33,16 @@ public class ThanhVien_Adapter extends RecyclerView.Adapter<ThanhVien_Adapter.Vi
     private ArrayList<ThanhVien> list;
     private ThanhVienDAO thanhVienDAO;
 
+    ThuThu thuthulist;
+
     public ThanhVien_Adapter(Context context) {
         this.context = context;
         thanhVienDAO = new ThanhVienDAO(context);
+    }
+
+    public ThanhVien_Adapter(Context context, ArrayList<ThanhVien> list) {
+        this.context = context;
+        this.list = list;
     }
 
     public void setData(ArrayList<ThanhVien> list) {
@@ -50,6 +60,20 @@ public class ThanhVien_Adapter extends RecyclerView.Adapter<ThanhVien_Adapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //test
+        SharedPreferences sharedPreferences = context.getSharedPreferences("THONGTIN", Context.MODE_PRIVATE);
+        String maThuThu = sharedPreferences.getString("MaTT", "");
+
+        ThuThuDAO thuThuDAO = new ThuThuDAO(context,thuthulist);
+        thuthulist = thuThuDAO.getID(maThuThu);
+
+
+        if(thuthulist.getLoaiTaiKhoan().equals("thành viên")){
+            holder.imgSuaTV.setVisibility(View.INVISIBLE);
+            holder.imgXoaTV.setVisibility(View.INVISIBLE);
+        }
+        //het
+
         ThanhVien thanhVien = list.get(position);
         if (thanhVien == null) {
             return;
@@ -67,7 +91,7 @@ public class ThanhVien_Adapter extends RecyclerView.Adapter<ThanhVien_Adapter.Vi
                 builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int check = thanhVienDAO.XoaThanhVien(list.get(holder.getAdapterPosition()).getMaTv());
+                        int check = thanhVienDAO.XoaThanhVien(list.get(holder.getAdapterPosition()).getTenTv());
                         switch (check) {
                             case 1:
                                 Toast.makeText(context, "Xoá thành công!", Toast.LENGTH_SHORT).show();

@@ -14,6 +14,24 @@
         android:src="@drawable/avt_cd"
         android:layout_marginBottom="20dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:text="Loại tài khoản"/>
+        <Spinner
+            android:id="@+id/spn_loai_taikhoan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"/>
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,11 +41,16 @@
         android:textColor="#3F51B5"
         android:textSize="16dp" />
 
-    <EditText
-        android:id="@+id/themtv_ed_tendangnhap"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/themtv_ed_tendangnhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,27 +61,18 @@
         android:textColor="#3F51B5"
         android:textSize="16dp" />
 
-    <EditText
-        android:id="@+id/themtv_ed_hoten"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Năm Sinh:"
-        android:textColor="#3F51B5"
-        android:textSize="16dp"
-        />
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/themtv_ed_hoten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/themtv_ed_ns"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -113,10 +127,10 @@
             android:text="ĐĂNG KÝ" />
 
         <Button
-            android:id="@+id/themtv_btn_xemds"
+            android:id="@+id/themtv_btn_danhsach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XEM DS"
+            android:text="Danh sách"
             android:layout_marginLeft="60dp"/>
     </LinearLayout>
 

@@ -22,44 +22,43 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Ngày:"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/tvNgay"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="7"
-                android:text="20/01/2023"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Tên thành viên :" />
+                android:layout_weight="5"
+                android:text="Thành viên mượn :"
+                android:textSize="16dp" />
             <TextView
                 android:id="@+id/tvTenThanhVien"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
                 android:text="Hoàng Văn A"
-                android:textStyle="bold"
-                android:textSize="16dp"/>
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngày:"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/tvNgay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:text="20/01/2023" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -68,7 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Tên thủ thư:" />
+                android:text="Tên thủ thư :" />
             <TextView
                 android:id="@+id/tvTenThuThu"
                 android:layout_width="0dp"
@@ -86,8 +85,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Tên Sách:" />
+                android:layout_weight="2"
+                android:text="Tên Sách  :" />
             <TextView
                 android:id="@+id/tvTenSach"
                 android:layout_width="0dp"
@@ -120,24 +119,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Tiền:" />
+                android:text="Tiền :" />
             <TextView
                 android:id="@+id/tvTien"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
                 android:text="1000"
-                android:gravity="center"
+                android:layout_marginLeft="10dp"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:textColor="#FF0000"/>
             <TextView
-                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:text="vnd"
                 android:gravity="left"
                 android:textSize="16dp"/>
@@ -146,14 +143,14 @@
         <TextView
             android:id="@+id/tvTrangThai"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/tvTien"
-            android:background="@drawable/button_background"
+            android:background="@drawable/button_background_mauxanh"
             android:text="Đã Trả Sách"
             android:textSize="17sp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

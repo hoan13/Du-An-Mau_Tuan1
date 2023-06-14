@@ -56,7 +56,7 @@
 
             </item>
             <item
-                android:icon="@drawable/baseline_vpn_key_24"
+                android:icon="@drawable/baseline_exit_to_app_24"
                 android:id="@+id/menu_nd_thoat"
                 android:title="Đăng xuất">
             </item>

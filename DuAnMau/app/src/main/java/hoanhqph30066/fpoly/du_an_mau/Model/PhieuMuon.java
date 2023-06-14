@@ -4,7 +4,7 @@ public class PhieuMuon {
     private int maPhieuMuon;
     private int maThanhVien;
     private int maSach;
-    private int TrangThai;
+    private String TrangThai;
     private int tienThue;
     private String tenThanhVien;
     private String tenThuThu;
@@ -39,11 +39,11 @@ public class PhieuMuon {
         this.maSach = maSach;
     }
 
-    public int getTrangThai() {
+    public String getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(String trangThai) {
         TrangThai = trangThai;
     }
 

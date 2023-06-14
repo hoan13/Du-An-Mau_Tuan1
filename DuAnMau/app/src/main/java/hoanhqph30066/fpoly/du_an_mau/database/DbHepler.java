@@ -22,15 +22,15 @@ public class DbHepler extends SQLiteOpenHelper {
         // Tạo bảng Thành Viên
         String createTableThanhVien = "CREATE TABLE ThanhVien(" +
                 "MaTV INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "hoTenTV TEXT NOT NULL, " +
-                "namSinhTV TEXT NOT NULL" +
+                "HoTenTV TEXT NOT NULL UNIQUE, " +
+                "NamSinhTV TEXT NOT NULL" +
                 ")";
         db.execSQL(createTableThanhVien);
 
         // Tạo bảng Thủ Thư
         String createTableThuThu = "CREATE TABLE ThuThu(" +
                 "MaTT TEXT PRIMARY KEY , " +
-                "HoTenTT TEXT NOT NULL, " +
+                "HoTenTT TEXT NOT NULL UNIQUE, " +
                 "MatKhauTT TEXT NOT NULL," +
                 "loaiTaiKhoan TEXT)";
         db.execSQL(createTableThuThu);
@@ -38,23 +38,23 @@ public class DbHepler extends SQLiteOpenHelper {
         // Tạo bảng Sách với khoá ngoại MaLoai tham chiếu đến bảng LoaiSach
         String createTableSach = "CREATE TABLE Sach(" +
                 "MaSach INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "TenSach TEXT NOT NULL, " +
+                "TenSach TEXT NOT NULL UNIQUE, " +
                 "GiaThueSach INTEGER NOT NULL," +
-                "MaLoai INTEGER  REFERENCES LoaiSach(MaLoai) )";
+                "TenLoai TEXT  REFERENCES LoaiSach(TenLoai) )";
         db.execSQL(createTableSach);
 
         // Tạo bảng Phiếu Mượn với các khoá ngoại MaTV, MaSach, MaTT tham chiếu đến bảng ThanhVien và ThuThu
         String createTablePhieuMuon = "CREATE TABLE PhieuMuon(" +
                 "MaPM INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "MaTV INTEGER REFERENCES ThanhVien(MaTV), " +
-                "MaSach INTEGER REFERENCES Sach(MaSach), " +
+                "HoTenTV INTEGER REFERENCES ThanhVien(HoTenTV), " +
+                "TenSach INTEGER REFERENCES Sach(TenSach), " +
                 "MaTT INTEGER REFERENCES ThuThu(MaTT)," +
                 "Ngay TEXT NOT NULL," +
-                "TienThue INTEGER NOT NULL," +
-                "TrangThai INTEGER NOT NULL )";
+                "GiaThueSach INTEGER REFERENCES Sach(GiaThueSach) ," +
+                "TrangThai TEXT NOT NULL )";
         db.execSQL(createTablePhieuMuon);
 
-        db.execSQL("INSERT INTO ThuThu VALUES ('admin','Hoàng Quốc Hoàn','admin','Admin'),('thuthu1','Nguyễn Văn A','1234','Thủ thư')");
+        db.execSQL("INSERT INTO ThuThu VALUES ('admin','Hoàng Quốc Hoàn','admin','Admin'),('thuthu1','Nguyễn Văn A','1234','thuthu')");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Loai_Sach;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import hoanhqph30066.fpoly.du_an_mau.DAO.LoaiSachDAO;
+import hoanhqph30066.fpoly.du_an_mau.DAO.ThuThuDAO;
 import hoanhqph30066.fpoly.du_an_mau.Model.LoaiSach;
+import hoanhqph30066.fpoly.du_an_mau.Model.ThuThu;
 import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class QuanLy_LoaiSach_Fragment extends Fragment {
@@ -31,10 +35,18 @@ public class QuanLy_LoaiSach_Fragment extends Fragment {
     LoaiSachDAO loaiSachDAO;
     LoaiSach_Adapter loaiSach_adapter;
 
+    ThuThu thuthulist;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_quanly_loaisach,container,false);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         flbt = view.findViewById(R.id.flbt_loaisach);
         recyclerView = view.findViewById(R.id.recycciew_ql_loaisach);
@@ -42,6 +54,35 @@ public class QuanLy_LoaiSach_Fragment extends Fragment {
         loaiSachDAO = new LoaiSachDAO(requireContext());
         loaiSach_adapter = new LoaiSach_Adapter(requireContext());
         capnhatdl();
+
+//   // test 2 trượt hiện add
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                if (dy>0 || dx>0){
+//                    flbt.show();
+//                }else {
+//                    flbt.hide();
+//                }
+//            }
+//        });
+//    // het test 2
+
+        //test
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("THONGTIN", Context.MODE_PRIVATE);
+        String maThuThu = sharedPreferences.getString("MaTT", "");
+
+        ThuThuDAO thuThuDAO = new ThuThuDAO(getContext(),thuthulist);
+        thuthulist = thuThuDAO.getID(maThuThu);
+
+//        ThuThu thuThu =thuThuDAO.getID(maThuThu);
+
+        if(thuthulist.getLoaiTaiKhoan().equals("thành viên")){
+            flbt.setVisibility(View.INVISIBLE);
+
+        }
+        //het
 
 
         flbt.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +120,7 @@ public class QuanLy_LoaiSach_Fragment extends Fragment {
             }
         });
 
-        return view;
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private void capnhatdl() {

@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:padding="16dp">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,7 +11,7 @@
         android:textSize="25dp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:text="Sửa Phiếu Mượn"
+        android:text="Thêm Phiếu Mượn"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +22,7 @@
         android:textStyle="bold"
         />
     <Spinner
-        android:id="@+id/dialogpm_suatentv"
+        android:id="@+id/spn_pmthem_tentv"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -35,7 +34,7 @@
         android:layout_marginTop="10dp"
         android:text="Tên Sách"/>
     <Spinner
-        android:id="@+id/dialogpm_suatensach"
+        android:id="@+id/spn_pmthem_tensach"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -53,7 +52,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/edSuagiathue"
+            android:id="@+id/ed_pmthem_giathue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +71,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edSuangaythue"
+            android:id="@+id/ed_pmthem_ngaythue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +83,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/ckb_suatrangthai"
+            android:id="@+id/ckb_pmthem_trangthai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -102,20 +101,18 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btnsuapm"
+            android:id="@+id/btn_pm_thempm"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
 
-            android:text="Sửa" />
+            android:text="Thêm" />
 
         <Button
-            android:id="@+id/btnthoatsuapm"
+            android:id="@+id/btn_pmthem_thoatsuapm"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="100dp"
             android:text="Thoát" />
     </LinearLayout>
-
-
 
 </LinearLayout>

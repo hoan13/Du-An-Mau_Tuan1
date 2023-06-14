@@ -11,8 +11,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -24,15 +28,17 @@ import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Loai_Sach.QuanLy_LoaiSach_F
 import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Phieu_Muon.QuanLy_PhieuMuon_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Sach.QuanLy_Sach_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.QuanLy_Thanh_Vien.QuanLy_ThanhVien_Fragment;
-import hoanhqph30066.fpoly.du_an_mau.Fragment.Sach_Muon_Nhieu_Nhat.SachMuon_NhieuNhat_Fragment;
+import hoanhqph30066.fpoly.du_an_mau.Fragment.Sach_Top_Muon.SachMuon_NhieuNhat_Fragment;
 import hoanhqph30066.fpoly.du_an_mau.Fragment.Them_Thanh_Vien.Them_ThanhVien_Fragment;
+import hoanhqph30066.fpoly.du_an_mau.Model.ThuThu;
 import hoanhqph30066.fpoly.du_an_mau.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
     private Toolbar toolbar;
+    ThuThu thuThu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.id_nav);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View HeaderView = navigationView.getHeaderView(0);
+        SharedPreferences shared_HoTen = getSharedPreferences("THONGTIN", MODE_PRIVATE);
+        String thuThu_hoTen = shared_HoTen.getString("HoTenTT", "");
+        TextView edUser =HeaderView.findViewById(R.id.welcome_tv);
+
+        edUser.setText("Welcome " + thuThu_hoTen+ " !");
+
+        SharedPreferences sharedPreferences = getSharedPreferences("LuuTaiKhoan", MODE_PRIVATE);
+        String role = sharedPreferences.getString("MaTT", "");
+        if (!role.equals("admin")){
+            Menu menu = navigationView.getMenu();
+//            menu.findItem(R.id.menu_tk_10_sach_mnn).setVisible(false);
+            menu.findItem(R.id.menu_tk_danhthu).setVisible(false);
+            menu.findItem(R.id.menu_nd_them_nguoidung).setVisible(false);
+        }
 
     }
 

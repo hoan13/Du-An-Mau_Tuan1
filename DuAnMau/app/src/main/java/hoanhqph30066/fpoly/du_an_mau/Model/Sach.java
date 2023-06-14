@@ -17,6 +17,23 @@ public class Sach {
         SoluongSachMuon = soluongSachMuon;
     }
 
+    public Sach(String tenSach, int giaSach, String tenLoai) {
+        TenSach = tenSach;
+        GiaSach = giaSach;
+        TenLoai = tenLoai;
+    }
+
+//    public Sach(String tenSach, int giaSach) {
+//        TenSach = tenSach;
+//        GiaSach = giaSach;
+//    }
+
+    public Sach(String tenSach, int soluongSachMuon) {
+        TenSach = tenSach;
+        SoluongSachMuon = soluongSachMuon;
+    }
+
+
     public int getMaSach() {
         return MaSach;
     }
